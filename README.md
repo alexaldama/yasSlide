@@ -11,6 +11,7 @@ Simple. Create a div, populate an array with your files and then call yasslide -
 
 *Example*
 
+<pre>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -47,3 +48,4 @@ $(document).ready(function(){
 </div>
 </body>
 </html>
+</pre>
