@@ -1,0 +1,27 @@
+{
+    "name": "yasslide",
+    "title": "Simple Slideshow",
+    "description": "Simple Slideshow in background of DIV with pre-emptive loading of images",
+    "keywords": [
+        "slide",
+        "slideshow"
+    ],
+    "version": "0.0.2",
+    "author": {
+        "name": "Chris Backhouse",
+        "url": "http://chris-backhouse.com"
+    },
+    "licenses": [
+        {
+            "type": "Simple Public License (SimPL-2.0)",
+            "url": "http://opensource.org/licenses/SimPL-2.0"
+        }
+    ],
+    "bugs": "https://github.com/chrisb34/yasSlide/issues",
+    "homepage": "https://github.com/chrisb34/yasSlide",
+    "docs": "https://github.com/chrisb34/yasSlide/blob/master/README.md",
+    "download": "https://github.com/chrisb34/yasSlide",
+    "dependencies": {
+        "jquery": ">=1.5"
+    }
+}
