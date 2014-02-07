@@ -3,7 +3,9 @@ yasSlide
 
 Div Background  slideshow with pre-loading of images and auto resizing
 
-A really simple div background slideshow jquery plugin using CSS3 transitions for a smooth fade between slides.
+A really simple div background slideshow jquery plugin using CSS3 transitions for a smooth fade between slides and only 4k in size and no dependencies on other libraries apart from jQuery.
+
+Images are loaded pre-emptively and only displayed once loaded (especially useful if site is being viewed on slow data connection).
 
 *How does it work?*
 
