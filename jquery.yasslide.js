@@ -3,6 +3,7 @@
  * Original author: Chris Backhouse (@_chrisbackhouse)
  * Based on jQuery Plugin Template by: @ajpiano & @addyosmani
  * Licensed under the MIT license
+ * Version: 0.2
  */
 
 (function($){
@@ -18,7 +19,22 @@ var yasSlide = function(element, options)
 	  
 		var bgObj, bgObj2, imgObj, cur_img, next_img, files, img_num;
 		
-		$.fn.changeSlide = function () {
+		var onImgLoad = function(selector, callback){
+			if (options['debug']==true) console.log(selector.complete);
+			
+			if (selector.get(0).complete ||  selector.height() > 0) { ///height for IE 10
+				callback.apply(selector);
+			}
+			else {
+				selector.on('load', function(){
+					callback.apply(selector);
+				});
+			}
+		};
+		function changeSlide() {
+			if (options['debug']==true) console.log(">onImgLoad");
+				
+			onImgLoad( imgObj, function() {
 				if (options['debug']==true) console.log(next_img);
 				if (options['debug']==true) console.log(files[next_img]);
 				if ((next_img % 2) == 0) {
@@ -37,16 +53,20 @@ var yasSlide = function(element, options)
 				next_img = (cur_img === img_num - 1) ? 0 : cur_img + 1;
 				cur_img = next_img;
 				imgObj.attr('src',files[next_img]);
+			});
 		}
-		$.fn.createImg = function () {
+		function createImg() {
 			bgObj.parent().append('<img id="'+bgObj.attr('id')+'-yassimg'+'" style="position:absolute; left: -9999px;">');
 			imgObj=$('#'+bgObj.attr('id')+'-yassimg');
 		}
-		$.fn.cloneDiv = function () {
+		function cloneDiv() {
 			bgObj.parent().append('<div id="'+bgObj.attr('id')+2+'"></div>');
 			bgObj2=$('#'+bgObj.attr('id')+2);
 			bgObj.resize();
 		};
+		$.fn.next = function () {
+			changeslide();
+		}
 		$.fn.resize = function () {
 			if (options['debug']==true) console.log('resizing');
 			p=bgObj.offset();
@@ -65,7 +85,7 @@ var yasSlide = function(element, options)
 		img_num=files.length;
 		var cur_img=0;
 		var next_img=0;
-		bgObj.cloneDiv(bgObj);
+		cloneDiv(bgObj);
 		bgObj.css('-webkit-transition', 'opacity 1s ease-in-out');
 		bgObj.css('-moz-transition', 'opacity 1s ease-in-out');
 		bgObj.css('-o-transition', 'opacity 1s ease-in-out');
@@ -75,15 +95,15 @@ var yasSlide = function(element, options)
 		bgObj2.css('-o-transition', 'opacity 1s ease-in-out');
 		bgObj2.css('transition', 'opacity 1s ease-in-out');
 		
-		bgObj.createImg();
-		bgObj.changeSlide();
+		createImg();
+		changeSlide();
 		
 		$(window).bind('resize.yasslide',function(){
 			setTimeout(function(){
 				bgObj.yasslide().resize();
 				},500);
 			});
-		setInterval($.proxy(bgObj.changeSlide, this), options['delay']);
+		setInterval($.proxy(changeSlide, this), options['delay']);
 		
 			
     };
