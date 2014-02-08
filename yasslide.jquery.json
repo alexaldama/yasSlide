@@ -1,12 +1,14 @@
 {
     "name": "yasslide",
     "title": "Simple Slideshow",
-    "description": "Simple Slideshow in background of DIV with pre-emptive loading of images",
+    "description": "A Simple Slideshow plugin that creates a slideshow in the background of DIV.  It includes lazy but pre-emptive loading of images for best network performance.",
     "keywords": [
         "slide",
-        "slideshow"
+        "slideshow",
+		"image",
+		"images"
     ],
-    "version": "0.0.2",
+    "version": "0.0.3",
     "author": {
         "name": "Chris Backhouse",
         "url": "http://chris-backhouse.com"
