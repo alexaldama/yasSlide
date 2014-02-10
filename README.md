@@ -52,6 +52,8 @@ $(document).ready(function(){
 &lt;/html&gt;
 </pre>
 
+For further examples see <a href="http://yasslide.chris-backhouse.com">yasslide.chris-backhouse.com</a>
+
 changes 0.0.4 - pass new array of files on resize.
 				new options for background-posiiton and background-size
 				
