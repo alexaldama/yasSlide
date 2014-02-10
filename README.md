@@ -51,3 +51,7 @@ $(document).ready(function(){
 &lt;/body&gt;
 &lt;/html&gt;
 </pre>
+
+changes 0.0.4 - pass new array of files on resize.
+				new options for background-posiiton and background-size
+				
