@@ -14,7 +14,9 @@ var yasSlide = function(element, options)
 		var obj = this;
 		var options = $.extend({
 			   delay: 5000,
-				debug: false
+			   debug: false,
+			   bgmode: 'cover',
+			   bgposition: 'center center'
 			}, options || {});
 	  
 		var bgObj, bgObj2, imgObj, cur_img, next_img, files, img_num;
@@ -40,14 +42,14 @@ var yasSlide = function(element, options)
 				if ((next_img % 2) == 0) {
 					if (options['debug']==true) console.log('content');
 					bgObj.css('background', 'url('+files[next_img]+') no-repeat'); //(vph);
-					bgObj.css('background-position', 'center center');
-					bgObj.css('background-size', 'cover'); //(vph);
+					bgObj.css('background-position',options['bgposition'] );
+					bgObj.css('background-size', options['bgmode']); //(vph);
 					bgObj2.css('opacity', 0);
 				} else {
 					console.log('coverlay');
 					bgObj2.css('background', 'url('+files[next_img]+') no-repeat'); //(vph);
-					bgObj2.css('background-position', 'center center');
-					bgObj2.css('background-size', 'cover'); //(vph);
+					bgObj2.css('background-position', options['bgposition']);
+					bgObj2.css('background-size', options['bgmode']); //(vph);
 					bgObj2.css('opacity', 100);
 				}
 				next_img = (cur_img === img_num - 1) ? 0 : cur_img + 1;
@@ -60,12 +62,17 @@ var yasSlide = function(element, options)
 			imgObj=$('#'+bgObj.attr('id')+'-yassimg');
 		}
 		function cloneDiv() {
-			bgObj.parent().append('<div id="'+bgObj.attr('id')+2+'"></div>');
-			bgObj2=$('#'+bgObj.attr('id')+2);
-			bgObj.resize();
+			if ($(bgObj2).length<=0) {
+				bgObj.parent().append('<div id="'+bgObj.attr('id')+2+'"></div>');
+				bgObj2=$('#'+bgObj.attr('id')+"yasslide");
+				bgObj.resize();
+			}
 		};
 		$.fn.next = function () {
 			changeslide();
+		}
+		$.fn.changeFiles = function (ofs) {
+			files=ofs;
 		}
 		$.fn.resize = function () {
 			if (options['debug']==true) console.log('resizing');
